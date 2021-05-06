@@ -1,0 +1,30 @@
+#cards{
+	display: grid;
+	grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% ;
+}
+
+.card{
+	/*height: 300px; */
+	border: 1px solid lightgrey; 
+	float: left;
+	margin: 20px 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.card h3, .card h4{padding: 0 10px;}
+.card img{width: 100%;}
+
+
+#chosen{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+}
+
+.chose{
+	display: grid;
+	grid-template-columns: 20% 80%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.15)
+}
+
+.chose img{width: 70px;}
+.chose p{margin: 5px}

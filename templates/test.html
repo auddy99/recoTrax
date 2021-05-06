@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+	<form id='reset' action="home">
+		<button type='submit'>Reset</button>
+	</form>
+	<p id="res"></p>
+	<form id='main' method="post">
+		<button type='submit'>Submit</button>
+		<input id='id' type="text" name='id'>
+	</form>
+	<br>
+	<div id="chosen">
+
+	</div>
+	<br>
+	<div id="cards">
+	{% for row in recos.itertuples() %}
+		<div class="card">
+			<span style="display:none;">{{row[1]}}</span>
+			<img src={{row[4]}}>
+			<h3>{{row[2]}}</h3>
+			<h4>
+			{% for i in row[3] %}
+				{{i}}<br>
+			{%endfor%}
+			</h4>
+		</div>
+	{%endfor%}
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static',filename='script.js')}}"></script>
+</body>
+</html>
