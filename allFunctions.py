@@ -18,10 +18,11 @@ import spotipy.util as util
 import warnings
 warnings.filterwarnings("ignore")
 
-client_id = '79ca288b68884e198c53146b51adfa1e'
-client_secret= '63242b064ebb4e379bfca173dd482e79'
-auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
-sp = spotipy.Spotify(auth_manager=auth_manager)
+# client_id = '79ca288b68884e198c53146b51adfa1e'
+# client_secret= '63242b064ebb4e379bfca173dd482e79'
+# auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+# sp = spotipy.Spotify(auth_manager=auth_manager)
+sp = "hello"
 
 def createBigPlaylist(id_list, spotify_df, n):
 
@@ -30,7 +31,8 @@ def createBigPlaylist(id_list, spotify_df, n):
     for id in id_list:
         artistName = spotify_df[spotify_df['id'] == id]['artists_upd_v1'].iloc[0]
         songName = spotify_df[spotify_df['id'] == id]['name'].values[0]
-        imageId = sp.track(id)['album']['images'][n]['url']
+        # imageId = sp.track(id)['album']['images'][n]['url']
+        imageId = 'https://www.wallpapers13.com/wp-content/uploads/2015/12/Nature-Lake-Bled.-Desktop-background-image-915x515.jpg'
         newRow = {'id':id,'name':songName,'artists':artistName,'url':imageId,
         'date_added':pd.to_datetime('2021-04-27 08:09:52+00:00')}
         idDF = idDF.append(newRow,ignore_index=True)
@@ -98,7 +100,8 @@ def generate_playlist_recos(df, features, feature_set, chosen):
     recos_top = remove_same_tracks(recos_top, chosen)
     recos_top = recos_top.drop_duplicates("artists").head(10)
     recos_top['artists'] = recos_top['artists'].apply(ast.literal_eval)
-    recos_top['url'] = recos_top['id'].apply(lambda x: sp.track(x)['album']['images'][1]['url'])
+    # recos_top['url'] = recos_top['id'].apply(lambda x: sp.track(x)['album']['images'][1]['url'])
+    recos_top['url'] = 'https://www.wallpapers13.com/wp-content/uploads/2015/12/Nature-Lake-Bled.-Desktop-background-image-915x515.jpg'
 
     recos_top = recos_top[['id','name','artists','url']]
     # Join with the existing recos_list after creating a dataframe with above cols
