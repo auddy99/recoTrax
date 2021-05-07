@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Test</title>
+	<title>RecoTrax Music Reccommender</title>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+	<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static',filename='recoTrax.ico')}}">
 </head>
 <body>
-	<form id='reset' action="home">
-		<button type='submit'>Reset</button>
-	</form>
-	<p id="res"></p>
-	<form id='main' method="post">
-		<button type='submit'>Submit</button>
-		<input id='id' type="text" name='id'>
-	</form>
-	<br>
-	<div id="chosen">
+	<div style="display: none">
+		<form id='reset' action="home">
+			<button type='submit'>Reset</button>
+		</form>
+		<form id='main' method="post">
+			<button type='submit'>Submit</button>
 
-	</div>
-	<br>
+			<input id='id' type="text" name='id'>
+		</form>
+	</div>	
+
+	<h1 id="app-title"><span>reco</span>trax</h1>
+	<div id="chosen"></div>
+
 	<div id="cards">
 	{% for row in recos.itertuples() %}
 		<div class="card">
