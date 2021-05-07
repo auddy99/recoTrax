@@ -11,10 +11,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-from spotipy.oauth2 import SpotifyOAuth
-import spotipy.util as util
+# import spotipy
+# from spotipy.oauth2 import SpotifyClientCredentials
+# from spotipy.oauth2 import SpotifyOAuth
+# import spotipy.util as util
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -24,7 +24,7 @@ from allFunctions import *
 
 
 app = Flask(__name__)
-spotify_df = pd.read_feather('spotify_df.feather')
+spotify_df = pd.read_feather('spotify_df_low.feather')
 complete_feature_set = pd.read_feather('cfs_final.feather')
 default_date = pd.to_datetime('2021-04-27 08:09:52+00:00')
 recos = pd.DataFrame()
@@ -46,7 +46,7 @@ def show():
 
 	selected = createBigPlaylist(id_list,spotify_df,2)
 	feature_vector, feature_set = generate_playlist_feature(complete_feature_set, selected, 1.09)
-	new_recos = generate_playlist_recos(spotify_df, feature_vector, feature_set, chosen)
+	new_recos = generate_playlist_recos(spotify_df, feature_vector, feature_set, chosen, spotify_df)
 
 	recos = new_recos
 	# recos = pd.concat([recos,new_recos])

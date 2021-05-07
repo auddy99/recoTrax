@@ -11,17 +11,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-from spotipy.oauth2 import SpotifyOAuth
-import spotipy.util as util
+# import spotipy
+# from spotipy.oauth2 import SpotifyClientCredentials
+# from spotipy.oauth2 import SpotifyOAuth
+# import spotipy.util as util
 import warnings
 warnings.filterwarnings("ignore")
 
-# client_id = '79ca288b68884e198c53146b51adfa1e'
-# client_secret= '63242b064ebb4e379bfca173dd482e79'
-# auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
-# sp = spotipy.Spotify(auth_manager=auth_manager)
 sp = "hello"
 
 def createBigPlaylist(id_list, spotify_df, n):
@@ -32,7 +28,8 @@ def createBigPlaylist(id_list, spotify_df, n):
         artistName = spotify_df[spotify_df['id'] == id]['artists_upd_v1'].iloc[0]
         songName = spotify_df[spotify_df['id'] == id]['name'].values[0]
         # imageId = sp.track(id)['album']['images'][n]['url']
-        imageId = 'https://www.wallpapers13.com/wp-content/uploads/2015/12/Nature-Lake-Bled.-Desktop-background-image-915x515.jpg'
+        imageId = spotify_df[spotify_df['id'] == id]['url'].values[0]
+        # imageId = 'https://www.wallpapers13.com/wp-content/uploads/2015/12/Nature-Lake-Bled.-Desktop-background-image-915x515.jpg'
         newRow = {'id':id,'name':songName,'artists':artistName,'url':imageId,
         'date_added':pd.to_datetime('2021-04-27 08:09:52+00:00')}
         idDF = idDF.append(newRow,ignore_index=True)
@@ -42,19 +39,7 @@ def createBigPlaylist(id_list, spotify_df, n):
 
 
 def generate_playlist_feature(complete_feature_set, playlist_df, weight_factor):
-    """ 
-    Summarize a user's playlist into a single vector
 
-    Parameters: 
-        complete_feature_set (pandas dataframe): Dataframe which includes all of the features for the spotify songs
-        playlist_df (pandas dataframe): playlist dataframe
-        weight_factor (float): float value that represents the recency bias. The larger the recency bias, the most priority recent songs get. Value should be close to 1. 
-        
-    Returns: 
-        playlist_feature_set_weighted_final (pandas series): single feature that summarizes the playlist
-        complete_feature_set_nonplaylist (pandas dataframe): 
-    """
-    
     complete_feature_set_playlist = complete_feature_set[complete_feature_set['id'].isin(playlist_df['id'].values)]#.drop('id', axis = 1).mean(axis =0)
     complete_feature_set_playlist = complete_feature_set_playlist.merge(playlist_df[['id','date_added']], on = 'id', how = 'inner')
     complete_feature_set_nonplaylist = complete_feature_set[~complete_feature_set['id'].isin(playlist_df['id'].values)]#.drop('id', axis = 1)
@@ -78,8 +63,8 @@ def generate_playlist_feature(complete_feature_set, playlist_df, weight_factor):
 
 
 def remove_same_tracks(recos, chosen):
-    l = []
 
+    l = []
     for i in range(50):
         if recos.iloc[i]['id'] in chosen:
             l.append(recos.iloc[i].name)
@@ -89,7 +74,7 @@ def remove_same_tracks(recos, chosen):
     return recos
 
 
-def generate_playlist_recos(df, features, feature_set, chosen):
+def generate_playlist_recos(df, features, feature_set, chosen, spotify_df):
 
     global sp
     
@@ -101,7 +86,7 @@ def generate_playlist_recos(df, features, feature_set, chosen):
     recos_top = recos_top.drop_duplicates("artists").head(10)
     recos_top['artists'] = recos_top['artists'].apply(ast.literal_eval)
     # recos_top['url'] = recos_top['id'].apply(lambda x: sp.track(x)['album']['images'][1]['url'])
-    recos_top['url'] = 'https://www.wallpapers13.com/wp-content/uploads/2015/12/Nature-Lake-Bled.-Desktop-background-image-915x515.jpg'
+    recos_top['url'] = recos_top['id'].apply(lambda x: spotify_df[spotify_df['id'] == x]['url'].values[0])
 
     recos_top = recos_top[['id','name','artists','url']]
     # Join with the existing recos_list after creating a dataframe with above cols
