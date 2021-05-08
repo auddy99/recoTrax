@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no" />
 	<title>RecoTrax Music Reccommender</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
 	<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static',filename='recoTrax.ico')}}">
 </head>
@@ -12,13 +16,18 @@
 		</form>
 		<form id='main' method="post">
 			<button type='submit'>Submit</button>
-
 			<input id='id' type="text" name='id'>
 		</form>
 	</div>	
 
-	<h1 id="app-title"><span>reco</span>trax</h1>
-	<div id="chosen"></div>
+	<div id="nav">
+		<span id="app-title"><span>reco</span>trax</span>
+		<span id="nav-icons">
+			<i onclick="window.location.href='https://github.com/auddy99/recoTrax'" class="fab fa-github"></i>
+			<i onclick="window.location.href='https://www.linkedin.com/in/soumyadeep-auddy-270a89141/'" class="fab fa-linkedin"></i>
+		</span>
+	</div>
+	<div id="chosen" style="display: none;"></div>
 
 	<div id="cards">
 	{% for row in recos.itertuples() %}

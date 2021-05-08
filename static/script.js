@@ -5,6 +5,7 @@ $(".card h4").each(function(){
 
 $("#cards").on('click', '.card', function(){
 	//chosen
+	$("#chosen").css("display","grid")
 	id = $(this).children("span").text()
 	url = $(this).children("img").attr("src")
 	name = $(this).children("h3").text()

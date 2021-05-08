@@ -1,8 +1,11 @@
 @font-face{font-family: 'runners';src: url('../static/fonts/runners.ttf');}
+@font-face{font-family: 'runners_bold';src: url('../static/fonts/runners_bold.ttf');}
 @font-face{font-family: 'typo';src: url('../static/fonts/typo.otf');}
 
-#app-title{font-size: 100px; font-family: 'runners'; margin: 10px 10px;}
+#nav{display: flex;justify-content: space-between;align-items: end; margin: 20px 0;}
+#app-title{font-size: 100px; font-family: 'runners'; margin: 10px 10px; font-weight: bold;}
 #app-title span{font-family: 'typo';}
+#nav-icons{font-size: 30px; margin: 25px; cursor: pointer;}
 
 #cards{
 	display: grid;
@@ -17,7 +20,7 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
-.card h3, .card h4{padding: 0 10px;}
+.card h3, .card h4{padding: 0 10px; text-transform: capitalize;}
 .card img{width: 100%;}
 #cards h4{font-style: italic;}
 
@@ -25,6 +28,7 @@
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
 	margin: 20px 0px 30px;
+	text-transform: capitalize;
 }
 
 .chose{
@@ -40,11 +44,17 @@
 
 
 @media screen and (max-width: 1000px) {
-  #app-title{margin: 40px 30px 10px;}
+  #nav{align-items: center;}
+  #nav-icons{margin: 15px;}
+  #app-title{font-size: 40px; margin: 0 10px 5px;}
+  #chosen{grid-template-columns: 50% 50%; font-size: 8px; margin: 0px 6px 20px;}
+  .chose img{width: 35px;}
+  .chose{box-shadow: 0 0px 0px 0 rgb(0 0 0 / 0%), 0 1px 5px 0 rgb(0 0 0 / 15%);}
+
   #cards{grid-template-columns: 25% 25% 25% 25%;}
-  #chosen{grid-template-columns: 50% 50%;margin: 50px 0px 50px;font-size: 8px;}
-  .chose img{width: 90px;}
   #cards h3{font-size: 10px;}
   #cards h4{font-size: 8px;}
+  .card{margin: 5px; box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%), 0 2px 5px 0 rgb(0 0 0 / 17%);}
+  .card h3, .card h4{padding: 0 6px;}
 }
 
