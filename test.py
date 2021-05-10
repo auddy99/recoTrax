@@ -34,7 +34,7 @@ recos = pd.DataFrame()
 def home():
 	global recos
 	initial_ids = ['7qiZfU4dY1lWllzX7mPBI3','1i1fxkWeaMmKEB4T7zqbzK','0e7ipj03S05BNilyu5bRzt','0VjIjW4GlUZAMYd2vXMi3b','2Fxmhks0bxGSBdJ92vM42m','0TK2YIli7K1leLovkQiNik','3KkXRkHbMCARz0aVfEt68P','1rfofaqEpACxVEHIZBJe6W','0pqnGHJpmpxLKifKRmU6WP']
-	recos = createBigPlaylist(initial_ids,spotify_df,1)
+	recos = createPlaylist(initial_ids,spotify_df,1)
 	return render_template('test.html', recos=recos)
 
 @app.route('/show',methods=['POST'])
@@ -44,14 +44,12 @@ def show():
 	id_list.append(request.form['id'])
 	chosen = request.form['chosen'].split(",")
 
-	selected = createBigPlaylist(id_list,spotify_df,2)
+	selected = createPlaylist(id_list,spotify_df,2)
 	feature_vector, feature_set = generate_playlist_feature(complete_feature_set, selected, 1.09)
-	new_recos = generate_playlist_recos(spotify_df, feature_vector, feature_set, chosen, spotify_df)
+	new_recos = generate_playlist_recos(spotify_df, feature_vector, feature_set, chosen)
 
+	# top song added to new_recos
 	recos = new_recos
-	# recos = pd.concat([recos,new_recos])
-	# recos['artists'] = recos['artists'].apply(tuple)
-	# recos = recos.drop_duplicates()
 
 	id_list = list(recos['id'])
 	names = list(recos['name'])
@@ -65,10 +63,6 @@ def show():
 	for i in artists:
 		artist_list += ",".join(i)+"$@"
 
-
-	# for row in recos.itertuples():
-	    # if row[1] in id_list:
-	        # recos.drop(row[0],inplace=True)
 
 	return jsonify({'id':id_list,'name':name_list,'artist':artist_list,'url':url_list})
 

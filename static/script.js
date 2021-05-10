@@ -3,6 +3,42 @@ $(".card h4").each(function(){
     $(this).children("br").last().remove()
 })
 
+function map_artists(n){
+	reco_artists = []
+	chosen_artists = []
+	$(".card h4").each(function(){
+		l = $(this).html().replaceAll("\n","").replaceAll("\t","").split("<br>")
+		reco_artists = reco_artists.concat(l)
+	})
+	$(".chose p").each(function(){
+		l = $(this).html().split("<br>")[1].replaceAll("\n","").replaceAll("\t","").split(", ")
+		chosen_artists = chosen_artists.concat(l)
+	})
+	dict = {}
+	reco_artists.forEach(function(el){
+		if(dict[el])dict[el]++
+		else dict[el] = 1
+	})
+	chosen_artists.forEach(function(el){
+		if(dict[el])dict[el]--
+		else dict[el] = -1
+	})
+
+	items = Object.keys(dict).map(function(key) {
+	  return [key, dict[key]];
+	})
+	items.sort(function(first, second) {
+	  return second[1] - first[1];
+	})
+	l = items.slice(0, n).map(function(x){
+	    return x[0]
+	})
+
+	return l
+	// return items
+}
+
+
 $("#cards").on('click', '.card', function(){
 	//chosen
 	$("#chosen").css("display","grid")

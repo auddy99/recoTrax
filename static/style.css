@@ -1,6 +1,15 @@
 @font-face{font-family: 'runners';src: url('../static/fonts/runners.ttf');}
 @font-face{font-family: 'runners_bold';src: url('../static/fonts/runners_bold.ttf');}
 @font-face{font-family: 'typo';src: url('../static/fonts/typo.otf');}
+@font-face{font-family: 'roboto';src: url('../static/fonts/Roboto-Regular.ttf');}
+@font-face{font-family: 'roboto-light';src: url('../static/fonts/Roboto-LightItalic.ttf');}
+
+/*https://coolors.co/0f0326-ef8354-c6c8ee-fcfcff-a63d40*/
+body{
+	background: #0c081b;
+	color: #ececec;
+	font-family: 'roboto';
+}
 
 #nav{display: flex;justify-content: space-between;align-items: end; margin: 20px 0;}
 #app-title{font-size: 100px; font-family: 'runners'; margin: 10px 10px; font-weight: bold;}
@@ -13,16 +22,20 @@
 }
 
 .card{
-	/*height: 300px; */
-	border: 1px solid lightgrey; 
+	background: #151029;
+	border-radius: 6px; 
 	float: left;
 	margin: 20px 10px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+	box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.1), 0 6px 20px 0 rgba(255, 255, 255, 0.05);
+	padding: 0px;
+	border: 0px solid #342c54;
+	font-size: 95%;
 }
 
+.card:hover{font-size:90%; padding: 2px;border: 2px solid #342c54;transition: all 0.2s;}
 .card h3, .card h4{padding: 0 10px; text-transform: capitalize;}
 .card img{width: 100%;}
-#cards h4{font-style: italic;}
+#cards h4{font-family: roboto-light;}
 
 #chosen{
 	display: grid;
@@ -32,9 +45,10 @@
 }
 
 .chose{
+	background: #151029;
 	display: grid;
 	grid-template-columns: 20% 80%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.15)
+	box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.08), 0 6px 20px 0 rgba(255, 255, 255, 0.03);
 }
 
 .chose img{width: 70px;}
@@ -58,3 +72,7 @@
   .card h3, .card h4{padding: 0 6px;}
 }
 
+::-webkit-scrollbar {width: 4px;}
+::-webkit-scrollbar-track {background: #85848a;}
+::-webkit-scrollbar-thumb {background: #2a2a2b;}
+::-webkit-scrollbar-thumb:hover {background: #36353c;}
