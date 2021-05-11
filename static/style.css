@@ -3,6 +3,7 @@
 @font-face{font-family: 'typo';src: url('../static/fonts/typo.otf');}
 @font-face{font-family: 'roboto';src: url('../static/fonts/Roboto-Regular.ttf');}
 @font-face{font-family: 'roboto-light';src: url('../static/fonts/Roboto-LightItalic.ttf');}
+@font-face{font-family: 'roboto-thin';src: url('../static/fonts/Roboto-Thin.ttf');}
 
 /*https://coolors.co/0f0326-ef8354-c6c8ee-fcfcff-a63d40*/
 body{
@@ -72,7 +73,70 @@ body{
   .card h3, .card h4{padding: 0 6px;}
 }
 
+#result{
+	position: fixed;
+	top: 60px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background: rgb(34 28 60 / 98%);
+	width: 1000px;
+	height: 600px;
+	border-radius: 20px;
+	border: 5px solid #2f2946f2;
+	box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.1), 0 6px 20px 0 rgba(255, 255, 255, 0.05);
+	font-family: roboto-thin;
+	letter-spacing: 2px;
+	padding: 20px 50px;
+}
+#result h1{letter-spacing: 4px;}
+#result-content{display: grid; grid-template-columns: 50% 50%;}
+#result-content h2{margin: 20px 0 30px;}
+#result-content h4{padding-left: 20px;}
+#cross-button{
+    position: fixed;
+    top: 80px;
+    right: 260px;
+    background: #2f2946f2;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+}
+#cross-button:hover{border: 1px solid rgb(0 0 0 / 8%);}
+#cross-button i{margin: 8px 10px;}
+
+#res-button{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background: #382f5d;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	border: 1px solid #605a77;
+	box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.1), 0 6px 20px 0 rgba(255, 255, 255, 0.05);
+	transition: border 0.3s;
+}
+#res-button:hover{border: 3px solid #605a77}
+#res-button i{font-size: 30px; margin: 24px 22px;}
+#alert-box{
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    color: #0c081b;
+    background: #ececec;
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #2f2946f2;
+    opacity: 0;
+}
+
 ::-webkit-scrollbar {width: 4px;}
 ::-webkit-scrollbar-track {background: #85848a;}
 ::-webkit-scrollbar-thumb {background: #2a2a2b;}
 ::-webkit-scrollbar-thumb:hover {background: #36353c;}
+
+
+

@@ -2,8 +2,15 @@ chosen_ids = ['7qiZfU4dY1lWllzX7mPBI3','1i1fxkWeaMmKEB4T7zqbzK','0e7ipj03S05BNil
 $(".card h4").each(function(){
     $(this).children("br").last().remove()
 })
+$("#res-button").hover(function(){
+	$("#alert-box").css("opacity","80%")
+	setTimeout(function(){$("#alert-box").css("opacity","0")},10000)
+})
 
-function map_artists(n){
+function show_result(){
+	$("#alert-box").css("display","none")
+	$("#result").css("display","block")
+	$("#res-button").css("display","none")
 	reco_artists = []
 	chosen_artists = []
 	$(".card h4").each(function(){
@@ -19,10 +26,10 @@ function map_artists(n){
 		if(dict[el])dict[el]++
 		else dict[el] = 1
 	})
-	chosen_artists.forEach(function(el){
-		if(dict[el])dict[el]--
-		else dict[el] = -1
-	})
+	// chosen_artists.forEach(function(el){
+	// 	if(dict[el])dict[el]--
+	// 	else dict[el] = -1
+	// })
 
 	items = Object.keys(dict).map(function(key) {
 	  return [key, dict[key]];
@@ -30,14 +37,34 @@ function map_artists(n){
 	items.sort(function(first, second) {
 	  return second[1] - first[1];
 	})
-	l = items.slice(0, n).map(function(x){
-	    return x[0]
-	})
 
-	return l
-	// return items
+	$("#new-reco div").html("")
+	$("#more-reco div").html("")
+	new_items = []
+	more_items = []
+	items.map(function(x){
+		if(chosen_artists.includes(x[0])){
+			more_items.push(x[0])
+		}
+		else{
+			new_items.push(x[0])
+		}
+	})
+	console.log(new_items)
+	console.log(more_items)
+	new_items.slice(0,10).map(function(x){
+	    $("#new-reco div").append("<h4>"+x+"</h4>")
+	})
+	more_items.slice(0,10).map(function(x){
+	    $("#more-reco div").append("<h4>"+x+"</h4>")
+	})
+	
 }
 
+function close_result(){
+	$("#result").css("display","none")
+	$("#res-button").css("display","block")
+}
 
 $("#cards").on('click', '.card', function(){
 	//chosen
