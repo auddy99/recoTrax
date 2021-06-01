@@ -1,4 +1,4 @@
-chosen_ids = ['7qiZfU4dY1lWllzX7mPBI3','1i1fxkWeaMmKEB4T7zqbzK','0e7ipj03S05BNilyu5bRzt','0VjIjW4GlUZAMYd2vXMi3b','2Fxmhks0bxGSBdJ92vM42m','0TK2YIli7K1leLovkQiNik','3KkXRkHbMCARz0aVfEt68P','1rfofaqEpACxVEHIZBJe6W','0pqnGHJpmpxLKifKRmU6WP']
+chosen_ids = ['50kpGaPAhYJ3sGmk6vplg0','6DCZcSspjsKoFjzjrWoCdn','2XU0oxnq2qxCpomAAuJY8K','7BKLCZ1jbUBVqRi2FVlTVw','7qiZfU4dY1lWllzX7mPBI3','0pqnGHJpmpxLKifKRmU6WP','0e7ipj03S05BNilyu5bRzt','0VjIjW4GlUZAMYd2vXMi3b','2Fxmhks0bxGSBdJ92vM42m','0TK2YIli7K1leLovkQiNik','7KXjTSCq5nL1LoYtL7XAwS','698ItKASDavgwZ3WjaWjtz','0nbXyq5TXYPCO7pr3N8S4I','2b8fOow8UzyDFAE27YhOZM','6lanRgr6wXibZr8KgzXxBl','5vGLcdRuSbUhD8ScwsGSdA','2nLtzopw4rPReszdYBJU6h']
 $(".card h4").each(function(){
     $(this).children("br").last().remove()
 })
