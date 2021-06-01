@@ -1,6 +1,6 @@
 # RecoTrax Music Reccomendation Engine
 
-![Project Image](https://i.imgur.com/Hp0OGF2.jpg)
+![Project Image](https://i.imgur.com/OnzkYRM.png)
 
 ## [Click here to open RecoTrax App](https://immense-stream-41047.herokuapp.com/)
 
@@ -115,7 +115,6 @@ We use 3 functions to carry out the entire creating reccommendation process
 #### First, we need to convert the selected songs into a dataset. 
 
 #### Here, `id_list` refers to the ids of songs chosen by user. `spotify_df` is the entire spotify dataset.
----
 ```python
 def createPlaylist(id_list, spotify_df):
 
@@ -132,7 +131,6 @@ def createPlaylist(id_list, spotify_df):
 ```
 ---
 #### Next, we create a cosine similarity vector with the help of the playlist dataset `playlist_df`. Weight factor is kept `1.09`.
----
 
 ```python
 def generate_playlist_feature(complete_feature_set, playlist_df, weight_factor):
@@ -163,7 +161,6 @@ def generate_playlist_feature(complete_feature_set, playlist_df, weight_factor):
 #### Now, the real deal is this function which uses the cosine similarity vector to find recommendations and returns the top 10 recommendations.
 
 #### Also, I made a small function `remove_same_tracks()` which removes tracks which are already recommended in the past.
----
 
 ```python
 def remove_same_tracks(recos, chosen):
@@ -200,7 +197,6 @@ If you want to check the full flask app code, check `test.py` file in my github 
 
 #### First, the feature engineered dataframe (spotify dataset and complete feature set dataset) is loaded
 
----
 ```python
 app = Flask(__name__)
 spotify_df = pd.read_feather('spotify_df_low.feather')
@@ -211,7 +207,6 @@ recos = pd.DataFrame()
 ---
 #### When any song card is clicked, it is routed to the `/show` page
 
----
 ```python
 @app.route('/show',methods=['POST'])
 def show():
@@ -246,7 +241,7 @@ def show():
 #### When a song is clicked, we dont want the page to reload. Not only will that destroy the user experience, but it will take exponentially more time if we had to render every image and the entire data of page every time user clicks a song card.
 
 #### The solution is switching to _Ajax_ which will submit our data without reloading page.
----
+
 ```js
 $("#main").on('submit', function(event){
 	$.ajax({
@@ -286,7 +281,7 @@ $("#main").on('submit', function(event){
 #### Here, `data` is the json object sent by flask. All the individual data is first extracted from the object.
 
 #### `cardString` creates an html string for the song card where all the information we got is binded and appended onto the html page.
----
+
 If you want to check the full js code of ajax, check `static/script.js` file in my github repo.
 
 ---
