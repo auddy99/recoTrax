@@ -2,7 +2,7 @@
 
 ![Project Image](https://i.imgur.com/OnzkYRM.png)
 
-## [Click here to open RecoTrax App](https://immense-stream-41047.herokuapp.com/)
+## [Click here to open RecoTrax App](https://recotrax.herokuapp.com/)
 
 > Site may take some time to load. Please be patient :)
 
