@@ -55,9 +55,6 @@ body{
 .chose img{width: 70px;}
 .chose p{margin: 5px}
 
-
-
-
 @media screen and (max-width: 1000px) {
   #nav{align-items: center;}
   #nav-icons{margin: 15px;}
@@ -72,6 +69,8 @@ body{
   .card{margin: 5px; box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%), 0 2px 5px 0 rgb(0 0 0 / 17%);}
   .card h3, .card h4{padding: 0 6px;}
 }
+
+
 
 #result{
 	position: fixed;
@@ -120,17 +119,40 @@ body{
 }
 #res-button:hover{border: 3px solid #605a77}
 #res-button i{font-size: 30px; margin: 24px 22px;}
-#alert-box{
+#alert-box, #less-alert{
     position: fixed;
     bottom: 120px;
     right: 20px;
     color: #0c081b;
     background: #ececec;
-    width: 200px;
+    width: 300px;
     padding: 15px;
     border-radius: 10px;
     border: 2px solid #2f2946f2;
     opacity: 0;
+}
+
+
+@media screen and (max-width: 1000px) {
+	#result {
+	    width: 280px;
+	    height: 450px;
+	    top: 80px;
+	    font-size: 10px;
+	    padding: 40px 30px;
+	}
+	#cross-button {
+	    top: 95px;
+	    right: 40px;
+	    height: 26px;
+	    width: 26px;
+	}
+	#result-content{
+		grid-column-gap: 10px;
+	}
+	#result-content h4{
+		padding-left: 0px;
+	}
 }
 
 ::-webkit-scrollbar {width: 4px;}

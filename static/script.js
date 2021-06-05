@@ -1,16 +1,19 @@
-chosen_ids = ['50kpGaPAhYJ3sGmk6vplg0','6DCZcSspjsKoFjzjrWoCdn','2XU0oxnq2qxCpomAAuJY8K','7BKLCZ1jbUBVqRi2FVlTVw','7qiZfU4dY1lWllzX7mPBI3','0pqnGHJpmpxLKifKRmU6WP','0e7ipj03S05BNilyu5bRzt','0VjIjW4GlUZAMYd2vXMi3b','2Fxmhks0bxGSBdJ92vM42m','0TK2YIli7K1leLovkQiNik','7KXjTSCq5nL1LoYtL7XAwS','698ItKASDavgwZ3WjaWjtz','0nbXyq5TXYPCO7pr3N8S4I','2b8fOow8UzyDFAE27YhOZM','6lanRgr6wXibZr8KgzXxBl','5vGLcdRuSbUhD8ScwsGSdA','2nLtzopw4rPReszdYBJU6h']
+chosen_ids = []
+new_items = []
+more_items = []
+$(".card span").each(function(){
+    chosen_ids.push( $(this).text() )
+})
+
 $(".card h4").each(function(){
     $(this).children("br").last().remove()
 })
 $("#res-button").hover(function(){
-	$("#alert-box").css("opacity","80%")
-	setTimeout(function(){$("#alert-box").css("opacity","0")},10000)
+	$("#alert-box").css("opacity","90%")
+	setTimeout(function(){$("#alert-box").css("opacity","0")},7000)
 })
 
 function show_result(){
-	$("#alert-box").css("display","none")
-	$("#result").css("display","block")
-	$("#res-button").css("display","none")
 	reco_artists = []
 	chosen_artists = []
 	$(".card h4").each(function(){
@@ -40,8 +43,7 @@ function show_result(){
 
 	$("#new-reco div").html("")
 	$("#more-reco div").html("")
-	new_items = []
-	more_items = []
+
 	items.map(function(x){
 		if(chosen_artists.includes(x[0])){
 			more_items.push(x[0])
@@ -50,15 +52,24 @@ function show_result(){
 			new_items.push(x[0])
 		}
 	})
-	console.log(new_items)
-	console.log(more_items)
+	//console.log(new_items)
+	//console.log(more_items)
+	if(more_items.length < 6){
+		$("#less-alert").css("opacity","90%")
+		setTimeout(function(){$("#less-alert").css("opacity","0")},10000)
+		return
+	}
+
+	$("#less-alert").css("display","none")
+	$("#alert-box").css("display","none")
+	$("#result").css("display","block")
+	$("#res-button").css("display","none")
 	new_items.slice(0,10).map(function(x){
 	    $("#new-reco div").append("<h4>"+x+"</h4>")
 	})
 	more_items.slice(0,10).map(function(x){
 	    $("#more-reco div").append("<h4>"+x+"</h4>")
 	})
-	
 }
 
 function close_result(){

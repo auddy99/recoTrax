@@ -10,10 +10,9 @@
 
 ### Table of Contents
 
-- [Description](#des436cription)
+- [Description](#description)
 - [How To Use](#how-to-use)
-- [Working of project](#how-it-works)
-- [Detailed Workflow with Code](#how-it-works)
+- [Working of project](#working-of-project)
 - [References](#references)
 - [Author Info](#author-info)
 
@@ -42,8 +41,6 @@ It uses the spotify dataset to screen through tens of thousands of songs and pro
     - MinMaxScaler
 * flask
 
-[Back To The Top](#read-me-template)
-
 ---
 
 ## How To Use
@@ -68,7 +65,7 @@ If you like any song simply click on it.
 
 Your selected song will come up on the upper bar and you will be provided more songs which are similar to your selected song.
 
-The parameters used for finding similarity between songs is discussed well in [How it works] section.
+The parameters used for finding similarity between songs is discussed well in [Working of project](#working-of-project) section.
 
 ![Project Image](https://i.imgur.com/2lrQufa.jpg)
 
@@ -98,7 +95,7 @@ Song reccomendations are right on your screen. Any song which is reccommended to
 
 After basic feature engineering like removing duplicates and one hot encoding of a few columns of the spotify dataset, we build a complete feature set of all songs with each song having encoded values for genre, popularity and year of release.
 
-TFIDF is used for encoding the genre. You can read about it in [References]. Using a table is created of shape (170653, 3071).
+TFIDF is used for encoding the genre. You can read about it in [References](#references). Using a table is created of shape (170653, 3071).
 
 After a few manipulations with genre combinations and filtering out the rows with very low popularity, the shape of feature set is brought down to (688, 163). 
 
